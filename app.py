@@ -43,6 +43,10 @@ def index():
     # 'index.html' template file.
     return render_template('index.html')
 
+@app.route('/cliente')
+def cliente():
+    return render_template('cliente/index.html')
+
 @app.route('/cliente/listar', methods=('GET', 'POST'))
 def listar_clientes():
     """
@@ -109,7 +113,7 @@ def listar_clientes():
     # Render the 'listar_clientes.html' template and pass the list of clientes as
     # a parameter. The 'render_template()' function will search for this template
     # file in the 'templates' directory of the Flask application package.
-    return render_template('listar_clientes.html', clientes=clientes)
+    return render_template('cliente/listar_clientes.html', clientes=clientes)
 
 @app.route('/cliente/criar', methods=('GET', 'POST'))
 def criar_cliente():
@@ -165,7 +169,7 @@ def criar_cliente():
         return redirect(url_for('index'))  # This redirects the user to the home page of the application
 
     # If the request method is not POST, render the 'criar_cliente.html' template
-    return render_template('criar_cliente.html')  # This renders the 'criar_cliente.html' template file
+    return render_template('cliente/criar_cliente.html')  # This renders the 'criar_cliente.html' template file
 
 @app.route('/cliente/<int:id>/editar', methods=('GET', 'POST'))
 def editar_cliente(id):
@@ -223,7 +227,7 @@ def editar_cliente(id):
     # with the client data passed as a parameter
     cursor.close()
     conn.close()
-    return render_template('editar_cliente.html', cliente=cliente)
+    return render_template('cliente/editar_cliente.html', cliente=cliente)
 
 @app.route('/cliente/<int:id>/visualizar', methods=('GET', 'POST'))
 def visualizar_cliente(id):
@@ -270,7 +274,7 @@ def visualizar_cliente(id):
     # Render the 'ver_cliente.html' template with the client data passed as a parameter
     # The client data is passed as a parameter named 'cliente'
     # This allows us to access the client data in the template using the 'cliente' variable
-    return render_template('ver_cliente.html', cliente=cliente)
+    return render_template('cliente/ver_cliente.html', cliente=cliente)
 
 
 
