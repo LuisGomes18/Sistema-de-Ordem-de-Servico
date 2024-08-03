@@ -8,12 +8,11 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = urandom(32)
 
 
-
 @app.route('/')
 def index():
-    """
+    '''
     This function is a route decorator that specifies the URL path for the
-    root URL ("/") of our Flask application. When a user visits the root URL,
+    root URL ('/') of our Flask application. When a user visits the root URL,
     this function is called to generate the HTML content for the page.
 
     The function calls the 'render_template()' function, which is a built-in
@@ -29,7 +28,7 @@ def index():
     'index.html' template file. This content is then returned as the response to
     the user's request.
 
-    So, when a user visits the root URL ("/") of our Flask application, they will
+    So, when a user visits the root URL ('/') of our Flask application, they will
     see the rendered HTML content of the 'index.html' template file.
 
     Note: Template files are HTML files that contain placeholders for dynamic
@@ -38,18 +37,20 @@ def index():
 
     In this case, we don't pass any data to the 'index.html' template file, so
     there are no placeholders to populate.
-    """
+    '''
     # Call the 'render_template()' function to generate the HTML content for the
     # 'index.html' template file.
     return render_template('index.html')
+
 
 @app.route('/cliente')
 def cliente():
     return render_template('cliente/index.html')
 
+
 @app.route('/cliente/listar', methods=('GET', 'POST'))
 def listar_clientes():
-    """
+    '''
     This function is a route decorator that specifies the URL path for the
     '/cliente/listar' URL of our Flask application. When a user visits this URL,
     this function is called to generate the HTML content for the page.
@@ -90,7 +91,7 @@ def listar_clientes():
     Note: Template files are HTML files that contain placeholders for dynamic
     content. When we render a template file, we pass in data that can be used
     to populate the placeholders in the template file.
-    """
+    '''
 
     # Establish a connection to the MySQL database
     conn = conectar_bando_de_dados()
@@ -115,9 +116,10 @@ def listar_clientes():
     # file in the 'templates' directory of the Flask application package.
     return render_template('cliente/listar_clientes.html', clientes=clientes)
 
+
 @app.route('/cliente/criar', methods=('GET', 'POST'))
 def criar_cliente():
-    """
+    '''
     This function handles the '/cliente/criar' URL endpoint. It is responsible for
     creating a new client in the database.
 
@@ -130,7 +132,7 @@ def criar_cliente():
 
     If the request method is not POST, it renders the 'criar_cliente.html' template
     file, which is used to display a form for creating a new client.
-    """
+    '''
 
     # Check if the request method is POST
     if request.method == 'POST':
@@ -146,7 +148,9 @@ def criar_cliente():
         id = gerar_id_cliente()  # This function generates a unique ID for the client
 
         # Connect to the MySQL database
-        conn = conectar_bando_de_dados()  # This function establishes a connection to the MySQL database
+        conn = (
+            conectar_bando_de_dados()
+        )  # This function establishes a connection to the MySQL database
 
         # Create a cursor object to execute SQL queries
         cursor = conn.cursor()  # This object is used to execute SQL queries on the database
@@ -154,7 +158,8 @@ def criar_cliente():
         # Execute an INSERT query to add the new client to the 'clientes' table
         cursor.execute(
             'INSERT INTO clientes (id, nome, endereco, telefone, email, informacoes) VALUES (%s, %s, %s, %s, %s, %s)',
-            (id, nome, endereco, telefone, email, informacoes))  # This query inserts the new client's data into the 'clientes' table
+            (id, nome, endereco, telefone, email, informacoes),
+        )  # This query inserts the new client's data into the 'clientes' table
 
         # Commit the changes to the database
         conn.commit()  # This commits the changes made to the database
@@ -171,20 +176,21 @@ def criar_cliente():
     # If the request method is not POST, render the 'criar_cliente.html' template
     return render_template('cliente/criar_cliente.html')  # This renders the 'criar_cliente.html' template file
 
+
 @app.route('/cliente/<int:id>/editar', methods=('GET', 'POST'))
 def editar_cliente(id):
-    """
-    This function handles the '/cliente/<int:id>/editar' URL endpoint. 
+    '''
+    This function handles the '/cliente/<int:id>/editar' URL endpoint.
     It is responsible for editing a client in the database.
 
-    If the request method is POST, it means that the user has submitted a form 
-    with client data. The function retrieves the form data, executes an UPDATE 
-    query to update the client with the specified ID, commits the changes to 
+    If the request method is POST, it means that the user has submitted a form
+    with client data. The function retrieves the form data, executes an UPDATE
+    query to update the client with the specified ID, commits the changes to
     the database, and redirects the user to the home page.
 
-    If the request method is not POST, it renders the 'editar_cliente.html' 
+    If the request method is not POST, it renders the 'editar_cliente.html'
     template file, which is used to display a form for editing a client.
-    """
+    '''
 
     # Connect to the MySQL database
     conn = conectar_bando_de_dados()
@@ -208,8 +214,10 @@ def editar_cliente(id):
         informacoes = request.form['informacoes']  # Get the value of the 'informacoes' field from the form
 
         # Execute an UPDATE query to update the client with the specified ID
-        cursor.execute('UPDATE clientes SET nome = %s, endereco= %s, telefone = %s, email = %s, informacoes = %s WHERE id = %s',
-                        (nome, endereco, telefone, email, informacoes, id))
+        cursor.execute(
+            'UPDATE clientes SET nome = %s, endereco= %s, telefone = %s, email = %s, informacoes = %s WHERE id = %s',
+            (nome, endereco, telefone, email, informacoes, id),
+        )
 
         # Commit the changes to the database
         conn.commit()
@@ -229,10 +237,11 @@ def editar_cliente(id):
     conn.close()
     return render_template('cliente/editar_cliente.html', cliente=cliente)
 
+
 @app.route('/cliente/<int:id>/visualizar', methods=('GET', 'POST'))
 def visualizar_cliente(id):
-    """
-    This function handles the '/cliente/<int:id>/visualizar' URL endpoint. 
+    '''
+    This function handles the '/cliente/<int:id>/visualizar' URL endpoint.
     It is responsible for displaying the details of a client in the database.
 
     Parameters:
@@ -252,7 +261,7 @@ def visualizar_cliente(id):
         The 'cliente' parameter is passed to the template file, which can be used to populate placeholders in the template file with the data from the 'cliente' variable.
         The 'render_template()' function returns the rendered HTML content for the 'ver_cliente.html' template file.
         This content is then returned as the response to the user's request.
-    """
+    '''
     # Connect to the MySQL database
     conn = conectar_bando_de_dados()
 
