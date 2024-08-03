@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editar_cliente/main.css') }}" class="css">
+    <title>Sistema de Ordem de Serviço</title>
+</head>
+
+<body>
+    <main>
+        {% block content %}
+        <h2>Editar Cliente</h2>
+        <a href="{{ url_for('listar_clientes') }}">Voltar</a>
+        <form method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome" value="{{ cliente.nome if cliente else '' }}" required><br>
+            <label for="endereco"></label>
+            <input type="text" name="endereco" id="endereco" value="{{ cliente.endereco if cliente else '' }}"
+                required><br>
+            <label for="contacto">Contacto:</label>
+            <input type="tel" name="contacto" id="contacto" placeholder="912 345 678" pattern="\d{9}"
+                value="{{ cliente.telefone if cliente else '' }}" required><br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value=" {{ cliente.email if cliente else '' }}" required><br>
+            <label for="informacoes">Informações:</label>
+            <input type="text" name="informacoes" id="informacoes"
+                value="{{ cliente.informacoes if cliente else '' }}"><br>
+            <input type="submit" value="Editar">
+        </form>
+        {% endblock %}
+    </main>
+</body>
+
+</html>

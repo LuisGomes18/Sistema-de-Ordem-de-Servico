@@ -1,0 +1,97 @@
+/* Estilo Geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container Principal */
+main {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Título */
+h2 {
+    margin-top: 0;
+    color: #007BFF;
+    text-align: center;
+}
+
+/* Links */
+a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: 1px solid #007BFF;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: absolute;
+    top: 25px;
+    left: 60%;
+}
+
+a:hover {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    main {
+        width: 100%;
+        margin: 10px;
+    }
+}

@@ -1,0 +1,70 @@
+/* Estilo Geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container Principal */
+main {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+}
+
+/* Título */
+h2 {
+    margin-top: 0;
+    color: #007BFF;
+    text-align: center;
+}
+
+/* Links */
+a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: 1px solid #007BFF;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: absolute;
+    top: 20%;
+    left: 63%;
+}
+
+a:hover {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+/* Labels e Parágrafos */
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+p {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    main {
+        width: 100%;
+        margin: 10px;
+    }
+}

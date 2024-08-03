@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ver_cliente/main.css') }}" class="css">
+    <title>Sistema de Ordem de Serviço</title>
+</head>
+
+<body>
+    <main>
+        {% block content %}
+        <h2>Visualizar Cliente</h2>
+        <a href="{{ url_for('listar_clientes') }}">Voltar</a>
+        <label for="nome">Nome:</label>
+        <p>{{ cliente.nome if cliente else '' }}</p>
+        <label for="endereco">Endereço:</label>
+        <p>{{ cliente.endereco if cliente else '' }}</p>
+        <label for="contacto">Contacto:</label>
+        <p>{{ cliente.telefone if cliente else '' }}</p>
+        <label for="email">Email:</label>
+        <p>{{ cliente.email if cliente else '' }}</p>
+        <label for="informacoes">Informações:</label>
+        <p>{{ cliente.informacoes if cliente else '' }}</p>
+        {% endblock %}
+    </main>
+</body>
+
+</html>
