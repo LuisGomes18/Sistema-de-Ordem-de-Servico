@@ -49,9 +49,12 @@ a:hover {
 /* Container de Botões */
 .button-container {
     display: flex;
-    gap: 10px; /* Espaçamento entre os botões */
-    justify-content: center; /* Centraliza os botões horizontalmente */
-    margin-bottom: 20px; /* Espaçamento abaixo do container de botões */
+    gap: 10px;
+    /* Espaçamento entre os botões */
+    justify-content: center;
+    /* Centraliza os botões horizontalmente */
+    margin-bottom: 20px;
+    /* Espaçamento abaixo do container de botões */
 }
 
 .button-container a {
