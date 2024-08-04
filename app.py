@@ -10,14 +10,16 @@ app.config['SECRET_KEY'] = urandom(32)
 
 @app.route('/')
 def index():
-    '''
+    """
     This function is a route decorator that specifies the URL path for the
     root URL ('/') of our Flask application. When a user visits the root URL,
     this function is called to generate the HTML content for the page.
 
-    The function calls the 'render_template()' function, which is a built-in
-    function in Flask that takes a template file name as an argument and renders
-    the HTML content for that template file.
+    This function has no parameters and does not accept any arguments.
+
+    The function uses the 'render_template()' function, which is a built-in
+    function in Flask. This function takes a template file name as an argument
+    and renders the HTML content for that template file.
 
     The argument passed to 'render_template()' is the name of the template file
     that we want to use. In this case, we want to use the 'index.html' template
@@ -37,14 +39,57 @@ def index():
 
     In this case, we don't pass any data to the 'index.html' template file, so
     there are no placeholders to populate.
-    '''
+
+    The function does not contain any conditional statements or loops, so it will
+    always execute the same way.
+
+    The function does not return any values or raise any exceptions.
+
+    The function does not perform any side effects, so it is considered a pure
+    function.
+    """
     # Call the 'render_template()' function to generate the HTML content for the
     # 'index.html' template file.
+    # This function returns the rendered HTML content for the 'index.html'
+    # template file.
+    # The rendered HTML content is then returned as the response to the user's
+    # request.
     return render_template('index.html')
 
 
 @app.route('/cliente')
 def cliente():
+    """
+    This function is a route decorator that specifies the URL path for the
+    '/cliente' URL of our Flask application. When a user visits this URL,
+    this function is called to generate the HTML content for the page.
+
+    The function calls the 'render_template()' function, which is a built-in
+    function in Flask that takes a template file name as an argument and renders
+    the HTML content for that template file.
+
+    The argument passed to 'render_template()' is the name of the template file
+    that we want to use. In this case, we want to use the 'index.html' template
+    file. The 'index.html' file is located in the 'templates/cliente' directory of
+    our Flask application.
+
+    The 'render_template()' function returns the rendered HTML content for the
+    'index.html' template file. This content is then returned as the response to
+    the user's request.
+
+    So, when a user visits the '/cliente' URL of our Flask application, they will
+    see the rendered HTML content of the 'index.html' template file located in the
+    'templates/cliente' directory.
+
+    Note: Template files are HTML files that contain placeholders for dynamic
+    content. When we render a template file, we pass in data that can be used
+    to populate the placeholders in the template file.
+
+    In this case, we don't pass any data to the 'index.html' template file, so
+    there are no placeholders to populate.
+    """
+    # Call the 'render_template()' function to generate the HTML content for the
+    # 'index.html' template file located in the 'templates/cliente' directory.
     return render_template('cliente/index.html')
 
 
